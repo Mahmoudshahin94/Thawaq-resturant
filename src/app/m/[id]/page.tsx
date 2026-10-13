@@ -7,8 +7,6 @@ import { useMenuData } from "@/lib/useMenuData";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import ImageCarousel from "@/components/menu/ImageCarousel";
-import { isStoreOpen } from "@/lib/store";
-import DetailCartBar from "@/components/cart/DetailCartBar";
 import type { MenuItem, Category, ItemImage } from "@/types";
 
 
@@ -322,13 +320,6 @@ export default function ItemDetailPage({ params }: { params: { id: string } }) {
     </motion.div>
   );
 
-  const cartSize = hasBothSizes ? effectiveSize ?? undefined : undefined;
-  const cartPrice = (cartSize ? displayPrice : item.price_large || item.price_small) ?? 0;
-
-  const CtaButton = ({ className = "" }: { className?: string }) => (
-    <DetailCartBar item={item} size={cartSize} price={cartPrice} className={className} storeOpen={isStoreOpen(data?.settings)} />
-  );
-
   return (
     <div className="min-h-screen bg-bg" dir={isRTL ? "rtl" : "ltr"}>
 
@@ -404,14 +395,10 @@ export default function ItemDetailPage({ params }: { params: { id: string } }) {
         </div>
 
         {/* Info panel */}
-        <div className="flex-1 px-5 pt-5 pb-28 space-y-5 overflow-y-auto scrollbar-hide">
+        <div className="flex-1 px-5 pt-5 pb-10 space-y-5 overflow-y-auto scrollbar-hide">
           <InfoContent />
         </div>
 
-        {/* Sticky bottom CTA */}
-        <div className="fixed bottom-0 inset-x-0 bg-surface border-t border-border px-5 py-3 pb-safe z-40">
-          <CtaButton />
-        </div>
       </div>
 
       {/* ── Desktop / Tablet layout (md+) ─────────────── */}
@@ -449,10 +436,6 @@ export default function ItemDetailPage({ params }: { params: { id: string } }) {
                   <InfoContent />
                 </div>
 
-                {/* CTA pinned to bottom of right panel */}
-                <div className="p-6 border-t border-border flex-shrink-0 bg-surface">
-                  <CtaButton />
-                </div>
               </div>
             </div>
           </motion.div>

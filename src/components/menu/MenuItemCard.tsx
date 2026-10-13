@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import AddToCartControl from "@/components/cart/AddToCartControl";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -13,8 +12,6 @@ interface MenuItemCardProps {
   index: number;
   category?: Category;
   itemImages?: ItemImage[];
-  /** When false (store closed) the add-to-cart control is hidden. */
-  storeOpen?: boolean;
 }
 
 /* Warm gradient palettes cycled by index for items without images */
@@ -29,7 +26,7 @@ const PLACEHOLDERS = [
   { from: "#FBE9E0", to: "#F4B393", emoji: "🥩" },
 ];
 
-export default function MenuItemCard({ item, index, category, itemImages, storeOpen = true }: MenuItemCardProps) {
+export default function MenuItemCard({ item, index, category, itemImages }: MenuItemCardProps) {
   const { lang, t, isRTL } = useLanguage();
   const [imgError, setImgError] = useState(false);
 
@@ -131,8 +128,6 @@ export default function MenuItemCard({ item, index, category, itemImages, storeO
             </div>
           )}
 
-          {/* Add to cart */}
-          {storeOpen && <AddToCartControl item={item} />}
         </div>
 
         {/* ── Content ── */}
