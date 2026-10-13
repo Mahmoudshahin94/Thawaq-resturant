@@ -30,7 +30,7 @@
       "name_en": "Musabbaha",
       "price": 7,
       "order": 2,
-      "image": "/menu/musabaha.jpg"
+      "image": "/menu/musabbaha.jpg"
     },
     {
       "category": "morning",
@@ -38,7 +38,7 @@
       "name_en": "Foul",
       "price": 8,
       "order": 3,
-      "image": "/menu/musabaha.jpg"
+      "image": "/menu/foul.jpg"
     },
     {
       "category": "morning",
@@ -46,7 +46,7 @@
       "name_en": "Kibbeh",
       "price": 5,
       "order": 4,
-      "image": ""
+      "image": "/menu/kibbeh.jpg"
     },
     {
       "category": "morning",
@@ -62,7 +62,7 @@
       "name_en": "Qalayeh",
       "price": 12,
       "order": 6,
-      "image": ""
+      "image": "/menu/qalayeh.jpg"
     },
     {
       "category": "morning",
@@ -70,7 +70,7 @@
       "name_en": "Liver",
       "price": 12,
       "order": 7,
-      "image": ""
+      "image": "/menu/liver.jpg"
     },
     {
       "category": "morning",
@@ -78,7 +78,7 @@
       "name_en": "Drinks",
       "price": 3,
       "order": 8,
-      "image": ""
+      "image": "/menu/drinks.jpg"
     },
     {
       "category": "evening",
@@ -94,7 +94,7 @@
       "name_en": "Mussahab",
       "price": 14,
       "order": 2,
-      "image": ""
+      "image": "/menu/mussahab.jpg"
     },
     {
       "category": "evening",
@@ -102,7 +102,7 @@
       "name_en": "Mu'arraf",
       "price": 14,
       "order": 3,
-      "image": ""
+      "image": "/menu/muarraf.jpg"
     },
     {
       "category": "evening",
@@ -110,7 +110,7 @@
       "name_en": "Tuna",
       "price": 10,
       "order": 4,
-      "image": ""
+      "image": "/menu/tuna.jpg"
     },
     {
       "category": "evening",
@@ -118,7 +118,7 @@
       "name_en": "Al-Thawaq Wings",
       "price": 16,
       "order": 5,
-      "image": ""
+      "image": "/menu/wings.jpg"
     },
     {
       "category": "evening",
@@ -126,7 +126,7 @@
       "name_en": "Schnitzel",
       "price": 14,
       "order": 6,
-      "image": ""
+      "image": "/menu/schnitzel.jpg"
     }
   ]
 }
