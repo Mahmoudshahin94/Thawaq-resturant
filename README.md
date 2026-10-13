@@ -1,6 +1,6 @@
 # مطعم الذواق (Al-Thawaq) — Digital Menu
 
-Bilingual (Arabic RTL / English) QR-code menu for **مطعم الذواق** (managed by Abu Kamal).
+Bilingual (Arabic RTL / English) QR-code menu for **مطعم الذواق**.
 Built with Next.js 14 (App Router), Tailwind CSS, NextAuth, Neon Postgres and Vercel Blob.
 
 Live: https://thawaq-menu.vercel.app

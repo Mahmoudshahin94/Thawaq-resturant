@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   keywords: ["مطعم الذواق", "Al-Thawaq", "menu", "digital menu"],
   openGraph: {
     title: "مطعم الذواق",
-    description: "مطعم الذواق — بإدارة أبو كمال",
+    description: "قائمة مطعم الذواق الرقمية",
     type: "website",
   },
 };

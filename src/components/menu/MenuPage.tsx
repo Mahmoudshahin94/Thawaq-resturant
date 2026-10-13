@@ -363,16 +363,6 @@ export default function MenuPage() {
               {shopName || t("site_name")}
             </motion.h1>
 
-            {/* Tagline */}
-            <motion.p
-              className="mt-1.5 text-ink-2 text-sm font-medium tagline-fade"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-            >
-              {t("tagline")}
-            </motion.p>
-
             {/* Social links */}
             <motion.div
               className="mt-4"
@@ -595,7 +585,6 @@ export default function MenuPage() {
           <span className="text-border">·</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
-        <p className="text-ink-3 text-[11px] mt-1">{t("tagline")}</p>
         <a href="/credits" className="inline-block text-ink-3 text-[10px] mt-2 underline opacity-70">
           {lang === "ar" ? "مصادر الصور" : "Photo credits"}
         </a>
