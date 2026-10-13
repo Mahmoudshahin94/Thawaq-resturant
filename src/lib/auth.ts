@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: "1",
             name: "Admin",
-            email: "admin@menu.local",
+            email: "admin@energy-menu.app",
           };
         }
         return null;

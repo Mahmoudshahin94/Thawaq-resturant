@@ -23,11 +23,13 @@ const config: Config = {
 
         // Static brand tokens (always the same)
         brand: {
-          red: "#CC0000",
-          "red-dark": "#990000",
-          espresso: "#1A0E07",
-          latte: "#C8956B",
-          cream: "#FAF7F2",
+          // Energy palette. Token names are kept from the template so existing
+          // admin classes (bg-brand-red …) pick up the new brand colours.
+          red: "#E8490C",        // Energy green (primary buttons)
+          "red-dark": "#C23A06",
+          espresso: "#17110D",   // charcoal (admin sidebar / login)
+          latte: "#F2A33A",      // Energy orange (accent)
+          cream: "#FFF8F2",
         },
       },
       fontFamily: {
@@ -45,9 +47,9 @@ const config: Config = {
       },
       backgroundImage: {
         "coffee-gradient":
-          "linear-gradient(135deg, #FAF0E4 0%, #F0D9C0 50%, #E8C9A8 100%)",
+          "linear-gradient(135deg, #FFF1E6 0%, #FBDCC4 50%, #F6C9A6 100%)",
         "espresso-gradient":
-          "linear-gradient(135deg, #2C1A0E 0%, #1A0E07 100%)",
+          "linear-gradient(135deg, #241B15 0%, #17110D 100%)",
       },
       animation: {
         "fade-in": "fadeIn 0.4s ease-out",

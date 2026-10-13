@@ -7,10 +7,6 @@ import ar from "@/locales/ar.json";
 
 const translations: Record<Language, Record<string, string>> = { en, ar };
 
-const LANG_STORAGE_KEY = "menu-lang";
-/** Prior storage key — migrated on read for existing browsers */
-const LEGACY_LANG_STORAGE_KEY = "b99-lang";
-
 const LanguageContext = createContext<LanguageContextType>({
   lang: "ar",
   setLang: () => {},
@@ -22,13 +18,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Language>("ar");
 
   useEffect(() => {
-    let stored = localStorage.getItem(LANG_STORAGE_KEY) as Language | null;
-    if (stored !== "en" && stored !== "ar") {
-      stored = localStorage.getItem(LEGACY_LANG_STORAGE_KEY) as Language | null;
-      if ((stored === "en" || stored === "ar") && typeof window !== "undefined") {
-        localStorage.setItem(LANG_STORAGE_KEY, stored);
-      }
-    }
+    const stored = localStorage.getItem("menu-lang") as Language | null;
     if (stored === "en" || stored === "ar") {
       setLangState(stored);
     }
@@ -42,7 +32,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLang = useCallback((newLang: Language) => {
     setLangState(newLang);
-    localStorage.setItem(LANG_STORAGE_KEY, newLang);
+    localStorage.setItem("menu-lang", newLang);
   }, []);
 
   const t = useCallback(

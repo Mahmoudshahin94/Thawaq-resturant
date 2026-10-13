@@ -1,0 +1,132 @@
+{
+  "categories": [
+    {
+      "key": "morning",
+      "name_en": "Morning Menu",
+      "name_ar": "الفترة الصباحية",
+      "icon": "🌅",
+      "order": 1
+    },
+    {
+      "key": "evening",
+      "name_en": "Evening Menu",
+      "name_ar": "الفترة المسائية",
+      "icon": "🌙",
+      "order": 2
+    }
+  ],
+  "items": [
+    {
+      "category": "morning",
+      "name_ar": "حمص",
+      "name_en": "Hummus",
+      "price": 7,
+      "order": 1,
+      "image": "/menu/hummus.jpg"
+    },
+    {
+      "category": "morning",
+      "name_ar": "مسبحة",
+      "name_en": "Musabbaha",
+      "price": 7,
+      "order": 2,
+      "image": "/menu/musabaha.jpg"
+    },
+    {
+      "category": "morning",
+      "name_ar": "فول",
+      "name_en": "Foul",
+      "price": 8,
+      "order": 3,
+      "image": "/menu/musabaha.jpg"
+    },
+    {
+      "category": "morning",
+      "name_ar": "كبة",
+      "name_en": "Kibbeh",
+      "price": 5,
+      "order": 4,
+      "image": ""
+    },
+    {
+      "category": "morning",
+      "name_ar": "فلافل",
+      "name_en": "Falafel",
+      "price": 6,
+      "order": 5,
+      "image": "/menu/falafel.jpg"
+    },
+    {
+      "category": "morning",
+      "name_ar": "قلاية",
+      "name_en": "Qalayeh",
+      "price": 12,
+      "order": 6,
+      "image": ""
+    },
+    {
+      "category": "morning",
+      "name_ar": "كبدة",
+      "name_en": "Liver",
+      "price": 12,
+      "order": 7,
+      "image": ""
+    },
+    {
+      "category": "morning",
+      "name_ar": "مشاريب",
+      "name_en": "Drinks",
+      "price": 3,
+      "order": 8,
+      "image": ""
+    },
+    {
+      "category": "evening",
+      "name_ar": "ساندويش الذواق",
+      "name_en": "Al-Thawaq Sandwich",
+      "price": 14,
+      "order": 1,
+      "image": "/menu/sandwich.jpg"
+    },
+    {
+      "category": "evening",
+      "name_ar": "مسحب",
+      "name_en": "Mussahab",
+      "price": 14,
+      "order": 2,
+      "image": ""
+    },
+    {
+      "category": "evening",
+      "name_ar": "معراف",
+      "name_en": "Mu'arraf",
+      "price": 14,
+      "order": 3,
+      "image": ""
+    },
+    {
+      "category": "evening",
+      "name_ar": "تونا",
+      "name_en": "Tuna",
+      "price": 10,
+      "order": 4,
+      "image": ""
+    },
+    {
+      "category": "evening",
+      "name_ar": "جنحان الذواق",
+      "name_en": "Al-Thawaq Wings",
+      "price": 16,
+      "order": 5,
+      "image": ""
+    },
+    {
+      "category": "evening",
+      "name_ar": "شنيتسل",
+      "name_en": "Schnitzel",
+      "price": 14,
+      "order": 6,
+      "image": ""
+    }
+  ]
+}

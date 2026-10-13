@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ToastProvider } from "@/context/ToastContext";
+import { CartProvider } from "@/context/CartContext";
 import SessionWrapper from "@/components/SessionWrapper";
 
 const poppins = Poppins({
@@ -21,12 +22,12 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "General Menu",
-  description: "General digital menu template — browse categories and items.",
-  keywords: ["menu", "digital menu", "general menu"],
+  title: "مطعم الذواق — Menu",
+  description: "قائمة مطعم الذواق الرقمية — حمص، فول، فلافل، ساندويشات ووجبات.",
+  keywords: ["مطعم الذواق", "Al-Thawaq", "menu", "digital menu"],
   openGraph: {
-    title: "General Menu",
-    description: "Digital menu template experience",
+    title: "مطعم الذواق",
+    description: "مطعم الذواق — بإدارة أبو كمال",
     type: "website",
   },
 };
@@ -41,7 +42,7 @@ export default function RootLayout({
           <ThemeProvider>
             <LanguageProvider>
               <ToastProvider>
-                {children}
+                <CartProvider>{children}</CartProvider>
               </ToastProvider>
             </LanguageProvider>
           </ThemeProvider>

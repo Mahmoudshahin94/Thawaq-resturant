@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { id } from "@instantdb/react";
 import Image from "next/image";
 import AdminLayout from "@/components/admin/AdminLayout";
-import { db } from "@/lib/db";
+import { useMenuData } from "@/lib/useMenuData";
+import { saveSettings } from "@/lib/adminApi";
 
 interface Setting {
   id: string;
@@ -13,10 +13,11 @@ interface Setting {
 }
 
 export default function SettingsPage() {
-  const { data, isLoading } = db.useQuery({ settings: {} });
+  const { data, isLoading } = useMenuData();
 
   const [logoUrl, setLogoUrl] = useState("");
   const [defaultLang, setDefaultLang] = useState("ar");
+  const [carouselSec, setCarouselSec] = useState(5);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -25,35 +26,31 @@ export default function SettingsPage() {
     const settings: Setting[] = data.settings;
     const logo = settings.find((s) => s.key === "logo");
     const lang = settings.find((s) => s.key === "default_lang");
+    const interval = settings.find((s) => s.key === "carousel_interval");
     if (logo) setLogoUrl(logo.value ?? "");
     if (lang) setDefaultLang(lang.value ?? "ar");
+    if (interval) {
+      const ms = parseInt(interval.value, 10);
+      if (!isNaN(ms)) setCarouselSec(Math.round(ms / 1000));
+    }
   }, [data?.settings]);
 
   const handleSave = async () => {
     setSaving(true);
     setSaved(false);
-    const settings: Setting[] = data?.settings ?? [];
+    const clampedSec = Math.min(30, Math.max(2, carouselSec));
 
-    const logoSetting = settings.find((s) => s.key === "logo");
-    const langSetting = settings.find((s) => s.key === "default_lang");
-
-    const transactions = [];
-
-    if (logoSetting) {
-      transactions.push(db.tx.settings[logoSetting.id].update({ value: logoUrl }));
-    } else {
-      const newId = id();
-      transactions.push(db.tx.settings[newId].update({ key: "logo", value: logoUrl }));
+    try {
+      await saveSettings({
+        logo: logoUrl,
+        default_lang: defaultLang,
+        carousel_interval: String(clampedSec * 1000),
+      });
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Failed to save settings");
+      setSaving(false);
+      return;
     }
-
-    if (langSetting) {
-      transactions.push(db.tx.settings[langSetting.id].update({ value: defaultLang }));
-    } else {
-      const newId = id();
-      transactions.push(db.tx.settings[newId].update({ key: "default_lang", value: defaultLang }));
-    }
-
-    await db.transact(transactions);
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
@@ -65,7 +62,7 @@ export default function SettingsPage() {
         <div className="mb-6">
           <h2 className="text-xl font-bold text-gray-800">Settings</h2>
           <p className="text-sm text-gray-500 mt-0.5">
-            Configure your coffee shop branding and preferences
+            Configure your restaurant branding and preferences
           </p>
         </div>
 
@@ -83,7 +80,7 @@ export default function SettingsPage() {
                 Logo URL
               </label>
               <p className="text-xs text-gray-400 mb-3">
-                Paste a URL to your logo image. Leave empty to use the default JudyTech logo.
+                Paste a URL to your logo image. Leave empty to use the default Al-Thawaq logo.
               </p>
 
               {/* Preview */}
@@ -107,7 +104,7 @@ export default function SettingsPage() {
                   )}
                 </div>
                 <p className="text-xs text-gray-400">
-                  {logoUrl ? "Custom logo" : "Default JudyTech logo"}
+                  {logoUrl ? "Custom logo" : "Default Al-Thawaq logo"}
                 </p>
               </div>
 
@@ -170,6 +167,43 @@ export default function SettingsPage() {
                     <p className="text-xs text-gray-400">English (LTR)</p>
                   </div>
                 </label>
+              </div>
+            </div>
+
+            <hr className="border-gray-100" />
+
+            {/* Carousel Interval */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Carousel Auto-Slide Interval
+              </label>
+              <p className="text-xs text-gray-400 mb-3">
+                How long each banner is displayed before auto-advancing. Min 2 s, max 30 s.
+              </p>
+              <div className="flex items-center gap-4">
+                <input
+                  type="range"
+                  min={2}
+                  max={30}
+                  step={1}
+                  value={carouselSec}
+                  onChange={(e) => setCarouselSec(Number(e.target.value))}
+                  className="flex-1 accent-brand-red"
+                />
+                <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 w-24">
+                  <input
+                    type="number"
+                    min={2}
+                    max={30}
+                    value={carouselSec}
+                    onChange={(e) => {
+                      const v = Number(e.target.value);
+                      setCarouselSec(Math.min(30, Math.max(2, isNaN(v) ? 5 : v)));
+                    }}
+                    className="w-10 text-sm font-semibold text-gray-800 bg-transparent focus:outline-none"
+                  />
+                  <span className="text-xs text-gray-400">sec</span>
+                </div>
               </div>
             </div>
 
